@@ -24,7 +24,7 @@ services:
       - ../../data/postgres:/var/lib/postgresql/data
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.3
+    image: elasticsearch
     volumes:
       - ../../data/elasticsearch:/usr/share/elasticsearch/data
 
