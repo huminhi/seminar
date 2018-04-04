@@ -58,7 +58,7 @@ services:
     environment:
       - "cluster.name=elasticsearch"
       - "bootstrap.memory_lock=true"
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+#      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - "xpack.security.enabled=false"
 
   kibana:
@@ -68,4 +68,6 @@ services:
     ports:
       - "5601:5601"
     environment:
-      - "elasticsearch.url=http://elasticsearch:9200"
+      - "elasticsearch.url=http://127.0.0.0.1:9200"
+      - "elasticsearch.username=elastic"
+      - "elasticsearch.password=changeme"
