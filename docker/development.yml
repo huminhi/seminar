@@ -1,0 +1,71 @@
+version: "2"
+
+services:
+  app:
+    extends:
+      file: base.yml
+      service: django
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SETTINGS_MODULE: gumi.development
+      DJANGO_DATABASE_DEFAULT: db
+      DJANGO_DATABASE_NAME: seminar_development
+      DJANGO_DATABASE_USER: root
+      DJANGO_DATABASE_PASSWORD: 123456
+    depends_on:
+      - db
+      - redis
+      - postgres
+      - elastisearch
+      - kibana
+
+  db:
+    extends:
+      file: base.yml
+      service: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: seminar_development
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: 123456
+
+  redis:
+    extends:
+      file: base.yml
+      service: redis
+
+  postgres:
+    extends:
+      file: base.yml
+      service: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: seminar_development
+      POSTGRES_USER: gumi
+      POSTGRES_PASSWORD: password
+
+  elastisearch:
+    extends:
+      file: base.yml
+      service: elasticsearch
+    ports:
+      - "9200:9200"
+    environment:
+      - "cluster.name=elasticsearch"
+      - "bootstrap.memory_lock=true"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "xpack.security.enabled=false"
+
+  kibana:
+    extends:
+      file: base.yml
+      service: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - "elasticsearch.url=http://elasticsearch:9200"

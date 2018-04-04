@@ -1,0 +1,29 @@
+version: "2.0"
+
+services:
+  app:
+    extends:
+      file: base.yml
+      service: django
+    ports:
+      - "9000:9000"
+    environment:
+      DJANGO_SETTINGS_MODULE: gumi.conf.settings.production
+      DJANGO_DATABASE_DEFAULT: db
+      DJANGO_DATABASE_USER: root
+      DJANGO_DATABASE_PASSWORD: n0bug4ever
+    depends_on:
+      - db
+
+  db:
+    extends:
+      file: base.yml
+      service: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: img2txt
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: n0bug4ever

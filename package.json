@@ -1,0 +1,23 @@
+{
+  "name": "Seminar",
+  "version": "1.0.0",
+  "description": "Gumi seminar series",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huminhi/seminar.git"
+  },
+  "author": "Hieu Huynh",
+  "license": "GNU General Public License v3.0",
+  "bugs": {
+    "url": "https://github.com/huminhi/seminar/issues"
+  },
+  "homepage": "https://github.com/huminhi/seminar",
+  "engines": {
+    "node": ">= 9.0"
+  },
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "datatables": "^1.10.13",
+    "jquery": "3.2.1"
+  }
+}
