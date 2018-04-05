@@ -7,7 +7,7 @@ services:
       dockerfile: docker/Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ../src/_static:/usr/src/app/_static
+      - ../_static:/usr/src/app/_static
 
   mysql:
     image: mysql
